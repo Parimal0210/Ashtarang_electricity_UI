@@ -1,9 +1,9 @@
 {
-  "name": "angular-pdfmake-invoice",
+  "name": "angular-invoice",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
+    "start": "node -e 'process.exit(!process.env.PORT) || console.log(process.env.PORT)' && ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
