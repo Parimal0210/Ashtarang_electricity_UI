@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node -e 'process.exit(!process.env.PORT) || console.log(process.env.PORT)' && ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
+    "start": "ng serve --port 10000 --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
