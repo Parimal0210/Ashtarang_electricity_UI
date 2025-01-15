@@ -4,7 +4,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { Invoice } from './model/Invoice';
 import { Observable } from 'rxjs';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfFonts.vfs;
 
 // class Product{
 //   name: string;
@@ -27,14 +27,16 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 // }
 @Component({
   selector: 'app-root',
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
 
   invoice = new Invoice(); 
   emptyCheck:boolean=true;
-
+  title:string="title";
 
   constructor(private http: HttpClient){}
   // generatePDF(action = 'open') {
