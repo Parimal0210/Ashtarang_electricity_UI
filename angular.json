@@ -59,7 +59,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "ashtarangi-electricity-UI:build"
+            "buildTarget": "ashtarangi-electricity-UI:build",
+            "port": 3000
           }
         },
         "extract-i18n": {
