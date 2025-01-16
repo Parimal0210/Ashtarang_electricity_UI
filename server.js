@@ -18,11 +18,11 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 // Serve static files from the "dist" folder
-app.use(express.static(path.join(__dirname, 'dist/ashtarangi_electricity_UI')));
+app.use(express.static(path.join(__dirname, 'dist/ashtarangi-electricity-UI')));
 
 // Catch-all route to redirect all requests to index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/ashtarangi_electricity_UI/browser', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist/ashtarangi-electricity-UI/browser', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
