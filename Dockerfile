@@ -20,7 +20,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy the built Angular app to the Nginx server
-COPY --from=build /app/dist/ashtarangi-electricity-UI /usr/share/nginx/html
+COPY --from=build /dist/ashtarangi-electricity-UI/browser /usr/share/nginx/html
 
 # Expose the port Nginx is listening on
 EXPOSE 80
