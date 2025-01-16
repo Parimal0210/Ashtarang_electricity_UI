@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose port 4200 for Angular development server
-EXPOSE 4200
+EXPOSE 80
 
 # Run the Angular development server
 CMD ["npm", "start"]
