@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { Invoice } from './model/Invoice';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 pdfMake.vfs = pdfFonts.vfs;
 
 // class Product{
@@ -33,12 +34,14 @@ pdfMake.vfs = pdfFonts.vfs;
 })
 
 export class AppComponent {
-
+  
   invoice = new Invoice(); 
   emptyCheck:boolean=true;
   title:string="title";
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient,private router: Router){}
+
+  
   // generatePDF(action = 'open') {
   //   let docDefinition = {
   //     content: [
