@@ -1,18 +1,31 @@
 const express = require('express');
 const path = require('path');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackConfig = require('./webpack.dev.js'); // Webpack config for development
 
 const app = express();
-const port = process.env.PORT || 3000;  // Use the port provided by Render or default to 8080
+const compiler = webpack(webpackConfig);
 
-// Serve static files from the dist folder
-app.use(express.static(path.join(__dirname, 'dist/ashtarangi-electricity-UI')));
+// Enable Webpack Dev Middleware to serve the Angular app
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: webpackConfig.output.publicPath,
+  stats: { colors: true }
+}));
 
-// Send all other requests to the index.html file
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/ashtarangi-electricity-UI/browser/index.html'));
+// Enable Webpack Hot Middleware for live-reloading
+app.use(webpackHotMiddleware(compiler));
+
+// Serve static files from the "dist" folder
+app.use(express.static(path.join(__dirname, 'dist/ashtarangi_electricity_UI')));
+
+// Catch-all route to redirect all requests to index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/ashtarangi_electricity_UI', 'index.html'));
 });
 
-// Start the server on the specified port
-app.listen(port, () => {
-  console.log(`App is running on port ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
