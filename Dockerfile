@@ -1,5 +1,5 @@
 # Use official Node.js image to build the Angular app
-FROM node:16 AS build
+FROM node:18.19 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the Angular app (production build)
-RUN npm run build --prod
+RUN npm run build
 
 # Use Nginx to serve the Angular app
 FROM nginx:alpine
