@@ -165,6 +165,13 @@ export class AppComponent {
       this.invoice=data
     })
   }
+
+  getInfoInv(){
+    this.getInfo().subscribe((data:any)=>{
+      console.log(data)
+      alert(data.response)
+    })
+  }
   save(){
     this.saveInvoice(this.invoice).subscribe((data:any)=>{
       console.log(data)
@@ -185,11 +192,16 @@ export class AppComponent {
 
   saveInvoice(invoice:Invoice):Observable<any>{
   //  return this.http.post<any>("http://localhost:8080/invoice/saveInvoice",invoice);
-  return this.http.post<any>("https://ashtarang-electricity.onrender.com/invoice/saveInvoice",invoice);
+  return this.http.post<any>("https://ashtarang-electricity.onrender.com/invoice/v1/saveInvoice",invoice);
   }
 
   generateInvoice():Observable<any>{
     // return this.http.get<any>("http://localhost:8080/invoice/generate");
-    return this.http.get<any>("https://ashtarang-electricity.onrender.com/invoice/generate");
+    return this.http.get<any>("https://ashtarang-electricity.onrender.com/invoice/v1/generateInvoice");
+  }
+
+  getInfo():Observable<any>{
+    // return this.http.get<any>("http://localhost:8080/invoice/generate");
+    return this.http.get<any>("https://ashtarang-electricity.onrender.com/invoice/v1/getInfo");
   }
 }
