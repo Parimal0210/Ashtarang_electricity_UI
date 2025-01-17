@@ -152,8 +152,8 @@ export class AppComponent {
   //   this.invoice.products.push(new Product());
   // }
   calculate(){
-    var x1: number = +this.invoice.newDateUnit;
-    var y1: number = +this.invoice.lastDateUnit;
+    let x1: number = +this.invoice.newDateUnit;
+    let y1: number = +this.invoice.lastDateUnit;
     this.invoice.unitsUsedThisMonth = x1 - y1
     this.invoice.amt = this.invoice.unitsUsedThisMonth * 12
     this.invoice.discountedAmount = this.invoice.amt - this.invoice.amt * 0.05
@@ -163,6 +163,7 @@ export class AppComponent {
     this.generateInvoice().subscribe((data:Invoice)=>{
       console.log(data)
       this.invoice=data
+      this.calculate()
     })
   }
 
