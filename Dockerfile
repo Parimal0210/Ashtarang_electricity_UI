@@ -13,14 +13,15 @@ COPY . .
 RUN npm run build
 
 # Step 2: Use Nginx to serve the built Angular app
-FROM nginx:alpine
+# FROM nginx:alpine
 
 # Copy the built Angular app to Nginx's default directory
-COPY --from=build /app/dist/ashtarangi-electricity-UI/browser /usr/share/nginx/html
+# COPY --from=build /app/dist/ashtarangi-electricity-UI/browser /usr/share/nginx/html
 
 # Expose the port Nginx is listening on
 EXPOSE 80
 
 # Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start;"]
 
