@@ -160,10 +160,9 @@ export class AppComponent {
     this.invoice.totalAmount = this.invoice.prevAmt + this.invoice.discountedAmount
   }
   generate(){
-    this.generateInvoice().subscribe((data:Invoice)=>{
+    this.generateInvoice().subscribe((data:any)=>{
       console.log(data)
-      this.invoice=data
-      this.calculate()
+      this.invoice=data.response
     })
   }
 
